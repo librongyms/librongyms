@@ -60,7 +60,7 @@
         <h1 id="question">May I be your Valentine, my icingsaibabawngcupcakeko? 🍰💗</h1>
         <div class="buttons" id="buttons">
             <button id="yesBtn" onclick="sayYes()">Yes</button>
-            <button id="noBtn" onclick="makeYesBiggerAndNoSmaller()">No</button>
+            <button id="noBtn" onclick="makeNoSmaller()">No</button>
         </div>
     </div>
 
@@ -72,25 +72,19 @@
             document.getElementById("buttons").style.display = "none"; // Hide buttons
         }
 
-        function makeYesBiggerAndNoSmaller() {
-            let yesBtn = document.getElementById("yesBtn");
+        function makeNoSmaller() {
             let noBtn = document.getElementById("noBtn");
 
             noClicks++; // Count the number of times "No" is clicked
 
             if (noClicks >= 8) {
                 noBtn.style.display = "none"; // Hide the No button
-                sayYes(); // Automatically change the message
                 return;
             }
 
-            // Increase "Yes" button size
-            let currentYesSize = parseInt(window.getComputedStyle(yesBtn).padding);
-            yesBtn.style.padding = (currentYesSize + 5) + "px";
-
             // Decrease "No" button size
             let currentNoSize = parseInt(window.getComputedStyle(noBtn).padding);
-            noBtn.style.padding = (currentNoSize - 5) + "px";
+            noBtn.style.padding = Math.max(currentNoSize - 5, 5) + "px"; // Prevents it from going negative
         }
     </script>
 
