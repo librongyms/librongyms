@@ -49,6 +49,14 @@
             color: red;
             border-color: red;
         }
+
+        #message {
+            display: none;
+            font-size: 22px;
+            font-weight: bold;
+            color: pink;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -57,21 +65,33 @@
         <h1>May I be your Valentine, my icingsaibabawngcupcakeko? 🍰💗</h1>
         <div class="buttons">
             <button id="yesBtn" onclick="sayYes()">Yes</button>
-            <button id="noBtn" onclick="makeYesBigger()">No</button>
+            <button id="noBtn" onclick="makeYesBiggerAndNoSmaller()">No</button>
         </div>
+        <div id="message"></div>
     </div>
 
     <script>
         function sayYes() {
-            alert("YAHOOOOO! 💗 Can’t wait to spend Valentine’s with you! mwaaa 😚");
+            let message = document.getElementById("message");
+            message.style.display = "block";
+            message.innerHTML = "YAHOOOOO! 💗 Can’t wait to spend Valentine’s with you! mwaaa 😚"
+";
         }
 
-        function makeYesBigger() {
+        function makeYesBiggerAndNoSmaller() {
             let yesBtn = document.getElementById("yesBtn");
-            let currentSize = parseInt(window.getComputedStyle(yesBtn).fontSize);
-            yesBtn.style.fontSize = (currentSize + 5) + "px";
+            let noBtn = document.getElementById("noBtn");
+
+            // Increase "Yes" button size
+            let currentSizeYes = parseInt(window.getComputedStyle(yesBtn).fontSize);
+            yesBtn.style.fontSize = (currentSizeYes + 5) + "px";
+
+            // Decrease "No" button size
+            let currentSizeNo = parseInt(window.getComputedStyle(noBtn).fontSize);
+            noBtn.style.fontSize = (currentSizeNo - 5) + "px";
         }
     </script>
 
 </body>
 </html>
+
