@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('https://i.imgur.com/ASD3KGP.gif') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow: hidden;
+            flex-direction: column;
+            text-align: center;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            border-radius: 10px;
+        }
+        #yes {
+            background-color: lightgreen;
+        }
+        #no {
+            background-color: lightcoral;
+        }
+        #yes.clicked {
+            background-color: green;
+        }
+        #no.clicked {
+            background-color: red;
+        }
+        h1 {
+            color: red;
+            font-size: 30px;
+            text-align: center;
+        }
+        .heart {
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <h1>May I be your Valentine, my icingsaibabawngcupcakeko? 🍰❤️</h1>
+        <div class="buttons">
+            <button id="yes">Yes 💚</button>
+            <button id="no">No 💔</button>
+        </div>
+    </div>
+
+    <script>
+        let yesButton = document.getElementById('yes');
+        let noButton = document.getElementById('no');
+        let count = 0;
+
+        function answer(choice) {
+            if (choice === 'no') {
+                count++;
+                yesButton.style.transform = `scale(${1 + count * 0.2})`;
+                yesButton.style.transition = 'transform 0.3s ease';
+                noButton.style.transform = `scale(${1 - count * 0.05})`;
+                noButton.style.transition = 'transform 0.3s ease';
+            } else {
+                yesButton.classList.add('clicked');
+                noButton.classList.add('clicked');
+                yesButton.style.transform = 'scale(1)';
+                noButton.style.transform = 'scale(1)';
+                document.body.style.background = 'url("https://i.imgur.com/ASD3KGP.gif") no-repeat center center fixed';
+                document.body.style.backgroundSize = 'cover';
+            }
+        }
+
+        yesButton.onclick = () => answer('yes');
+        noButton.onclick = () => answer('no');
+    </script>
+
+</body>
+</html>
