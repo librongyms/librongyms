@@ -58,7 +58,7 @@
 
     <div class="container">
         <h1 id="question">May I be your Valentine, my icingsaibabawngcupcakeko? 🍰💗</h1>
-        <div class="buttons" id="buttons">
+        <div class="buttons">
             <button id="yesBtn" onclick="sayYes()">Yes</button>
             <button id="noBtn" onclick="makeNoSmaller()">No</button>
         </div>
@@ -69,22 +69,22 @@
 
         function sayYes() {
             document.getElementById("question").innerHTML = "YAHOOOOO! 💗 Can’t wait to spend Valentine’s with you! mwaaa 😚";
-            document.getElementById("buttons").style.display = "none"; // Hide buttons
+            document.querySelector(".buttons").style.display = "none"; // Hide both buttons
         }
 
         function makeNoSmaller() {
             let noBtn = document.getElementById("noBtn");
 
-            noClicks++; // Count the number of times "No" is clicked
+            noClicks++; // Count "No" clicks
 
             if (noClicks >= 8) {
-                noBtn.style.display = "none"; // Hide the No button
+                noBtn.style.display = "none"; // Hide "No" button
                 return;
             }
 
-            // Decrease "No" button size
-            let currentNoSize = parseInt(window.getComputedStyle(noBtn).padding);
-            noBtn.style.padding = Math.max(currentNoSize - 5, 5) + "px"; // Prevents it from going too small
+            // Make "No" button smaller
+            let currentSize = parseInt(window.getComputedStyle(noBtn).padding);
+            noBtn.style.padding = Math.max(currentSize - 5, 5) + "px"; // Prevents it from going too tiny
         }
     </script>
 
